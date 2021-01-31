@@ -36,7 +36,7 @@ func TestMaxHeapPop(t *testing.T) {
 	if expectedValue != gotValue {
 		t.Errorf("Build heap failed, got: value=%d, want: value=%d.", gotValue, expectedValue)
 	}
-	expectedArray := []int{14, 12, 7, 8, 5, 3, 1, 0}
+	expectedArray := []int{14, 12, 7, 8, 5, 3, 1}
 	gotArray := h.Print()
 	if !reflect.DeepEqual(expectedArray, gotArray) {
 		t.Errorf("Build heap failed, got: arr=%v, want: arr=%v.", gotArray, expectedArray)
@@ -64,7 +64,7 @@ func TestMaxHeapInsert(t *testing.T) {
 	h := NewHeap(Max, 1)
 	h.Build(&arr)
 	expectedValue := 1
-	gotValue := h.Top()
+	gotValue := h.Pop()
 	if expectedValue != gotValue {
 		t.Errorf("Build heap failed, got: value=%d, want: value=%d.", gotValue, expectedValue)
 	}

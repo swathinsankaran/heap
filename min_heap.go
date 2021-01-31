@@ -20,6 +20,9 @@ func (h *minHeap) heapify(i int) {
 }
 
 func (h *minHeap) Build(arr *[]int) {
+	if len(h.data) == 0 {
+		h.data = make([]int, len(*arr))
+	}
 	copy(h.data, *arr)
 	h.capacity = len(*arr)
 	for i := h.capacity/2 - 1; i >= 0; i-- {
@@ -42,7 +45,7 @@ func (h *minHeap) Pop() int {
 	}
 	v := h.data[0]
 	h.data[0] = h.data[h.capacity-1]
-	h.data[h.capacity-1] = 0
+	h.data = h.data[:h.capacity-1]
 	h.capacity--
 	h.heapify(0)
 	return v

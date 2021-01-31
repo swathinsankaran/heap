@@ -36,7 +36,7 @@ func TestMinHeapPop(t *testing.T) {
 	if expectedValue != gotValue {
 		t.Errorf("Build heap failed, got: value=%d, want: value=%d.", gotValue, expectedValue)
 	}
-	expectedArray := []int{3, 5, 7, 8, 12, 16, 14, 0}
+	expectedArray := []int{3, 5, 7, 8, 12, 16, 14}
 	gotArray := h.Print()
 	if !reflect.DeepEqual(expectedArray, gotArray) {
 		t.Errorf("Build heap failed, got: arr=%v, want: arr=%v.", gotArray, expectedArray)
