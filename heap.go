@@ -1,10 +1,10 @@
-package main
+package heap
 
 type HeapType byte
 
 const (
-	MIN HeapType = iota
-	MAX
+	Min HeapType = iota
+	Max
 )
 
 type Heap interface {
@@ -12,14 +12,15 @@ type Heap interface {
 	Build(*[]int)
 	Print() []int
 	Top() int
+	Pop() int
 }
 
-func newHeap(heapType HeapType) Heap {
+func NewHeap(heapType HeapType, capacity int) Heap {
 	switch heapType {
-	case MIN:
-		return &minHeap{}
-	case MAX:
-		return &maxHeap{}
+	case Min:
+		return &minHeap{capacity: capacity, data: make([]int, capacity)}
+	case Max:
+		return &maxHeap{capacity: capacity, data: make([]int, capacity)}
 	}
 	return nil
 }

@@ -1,4 +1,4 @@
-package main
+package heap
 
 func swap(a, b *int) {
 	t := *a
