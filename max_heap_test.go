@@ -58,3 +58,20 @@ func TestMaxHeapPopEmpty(t *testing.T) {
 		t.Errorf("Build heap failed, got: value=%d, want: value=%d.", gotValue, expectedValue)
 	}
 }
+
+func TestMaxHeapInsert(t *testing.T) {
+	arr := []int{1}
+	h := NewHeap(Max, 1)
+	h.Build(&arr)
+	expectedValue := 1
+	gotValue := h.Top()
+	if expectedValue != gotValue {
+		t.Errorf("Build heap failed, got: value=%d, want: value=%d.", gotValue, expectedValue)
+	}
+	h.Insert(10)
+	expectedValue = 10
+	gotValue = h.Pop()
+	if expectedValue != gotValue {
+		t.Errorf("Build heap failed, got: value=%d, want: value=%d.", gotValue, expectedValue)
+	}
+}

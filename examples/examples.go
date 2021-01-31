@@ -7,7 +7,7 @@ import (
 )
 
 func main() {
-	arr := []int{5, 3, 6, 1, 2, 4, 10, 22, 34, 7}
+	arr := []int{5, 3, 6, 11, 2, 4, 10, 22, 34, 7}
 	fmt.Println("Before heapify", arr)
 
 	h := heap.NewHeap(heap.Max, 10)
@@ -19,6 +19,8 @@ func main() {
 	fmt.Println("After pop", h.Print())
 	h.Build(&arr)
 	fmt.Println("After new", h.Print())
+	h.Insert(100)
+	fmt.Println("After insert", h.Print())
 
 	h1 := heap.NewHeap(heap.Min, 10)
 	h1.Build(&arr)
@@ -30,4 +32,7 @@ func main() {
 
 	h1.Build(&arr)
 	fmt.Println("After new", h1.Print())
+
+	h1.Insert(1)
+	fmt.Println("After insert", h1.Print())
 }

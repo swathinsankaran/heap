@@ -48,6 +48,14 @@ func (h *maxHeap) Pop() int {
 	return v
 }
 
+func (h *maxHeap) Insert(value int) {
+	h.data = append(h.data, value)
+	h.capacity++
+	for i := h.capacity - 1; i > 0 && h.data[i/2] < h.data[i]; i /= 2 {
+		swap(&h.data[i/2], &h.data[i])
+	}
+}
+
 func (h *maxHeap) getMaxIndex(arr []int, a, b int) int {
 	if a < h.capacity {
 		if arr[a] > arr[b] {

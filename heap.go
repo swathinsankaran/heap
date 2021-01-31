@@ -13,6 +13,7 @@ type Heap interface {
 	Print() []int
 	Top() int
 	Pop() int
+	Insert(int)
 }
 
 func NewHeap(heapType HeapType, capacity int) Heap {

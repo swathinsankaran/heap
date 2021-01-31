@@ -58,3 +58,20 @@ func TestMinHeapPopEmpty(t *testing.T) {
 		t.Errorf("Build heap failed, got: value=%d, want: value=%d.", gotValue, expectedValue)
 	}
 }
+
+func TestMinHeapInsert(t *testing.T) {
+	arr := []int{10}
+	h := NewHeap(Min, 1)
+	h.Build(&arr)
+	expectedValue := 10
+	gotValue := h.Top()
+	if expectedValue != gotValue {
+		t.Errorf("Build heap failed, got: value=%d, want: value=%d.", gotValue, expectedValue)
+	}
+	h.Insert(5)
+	expectedValue = 5
+	gotValue = h.Pop()
+	if expectedValue != gotValue {
+		t.Errorf("Build heap failed, got: value=%d, want: value=%d.", gotValue, expectedValue)
+	}
+}
