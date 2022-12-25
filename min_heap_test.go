@@ -7,7 +7,7 @@ import (
 
 func TestMinHeapBuild(t *testing.T) {
 	arr := []int{1, 12, 3, 14, 5, 16, 7, 8}
-	h := NewHeap(Min, 8)
+	h := NewHeap[int](Min, 8)
 	h.Build(&arr)
 	expectedArray := []int{1, 5, 3, 8, 12, 16, 7, 14}
 	gotArray := h.Print()
@@ -18,7 +18,7 @@ func TestMinHeapBuild(t *testing.T) {
 
 func TestMinHeapTop(t *testing.T) {
 	arr := []int{1, 12, 3, 14, 5, 16, 7, 8}
-	h := NewHeap(Min, 8)
+	h := NewHeap[int](Min, 8)
 	h.Build(&arr)
 	expectedValue := 1
 	gotValue := h.Top()
@@ -29,7 +29,7 @@ func TestMinHeapTop(t *testing.T) {
 
 func TestMinHeapPop(t *testing.T) {
 	arr := []int{1, 12, 3, 14, 5, 16, 7, 8}
-	h := NewHeap(Min, 8)
+	h := NewHeap[int](Min, 8)
 	h.Build(&arr)
 	expectedValue := 1
 	gotValue := h.Pop()
@@ -45,7 +45,7 @@ func TestMinHeapPop(t *testing.T) {
 
 func TestMinHeapPopEmpty(t *testing.T) {
 	arr := []int{1}
-	h := NewHeap(Min, 1)
+	h := NewHeap[int](Min, 1)
 	h.Build(&arr)
 	expectedValue := 1
 	gotValue := h.Pop()
@@ -61,7 +61,7 @@ func TestMinHeapPopEmpty(t *testing.T) {
 
 func TestMinHeapInsert(t *testing.T) {
 	arr := []int{10}
-	h := NewHeap(Min, 1)
+	h := NewHeap[int](Min, 1)
 	h.Build(&arr)
 	expectedValue := 10
 	gotValue := h.Top()

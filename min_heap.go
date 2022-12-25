@@ -1,13 +1,11 @@
 package heap
 
-import "fmt"
-
-type minHeap struct {
-	data     []int
+type minHeap[T SupportedTypes] struct {
+	data     []T
 	capacity int
 }
 
-func (h *minHeap) heapify(i int) {
+func (h *minHeap[T]) heapify(i int) {
 	l := (2 * i) + 1
 	r := (2 * i) + 2
 	index := i
@@ -19,9 +17,9 @@ func (h *minHeap) heapify(i int) {
 	}
 }
 
-func (h *minHeap) Build(arr *[]int) {
+func (h *minHeap[T]) Build(arr *[]T) {
 	if len(h.data) == 0 {
-		h.data = make([]int, len(*arr))
+		h.data = make([]T, len(*arr))
 	}
 	copy(h.data, *arr)
 	h.capacity = len(*arr)
@@ -30,28 +28,27 @@ func (h *minHeap) Build(arr *[]int) {
 	}
 }
 
-func (h *minHeap) Print() []int {
+func (h *minHeap[T]) Print() []T {
 	return h.data
 }
 
-func (h *minHeap) Top() int {
+func (h *minHeap[T]) Top() T {
 	return h.data[0]
 }
 
-func (h *minHeap) Pop() int {
-	if h.capacity == 0 {
-		fmt.Println("heap is empty")
-		return 0
+func (h *minHeap[T]) Pop() T {
+	var v T
+	if h.capacity != 0 {
+		v = h.data[0]
+		h.data[0] = h.data[h.capacity-1]
+		h.data = h.data[:h.capacity-1]
+		h.capacity--
+		h.heapify(0)
 	}
-	v := h.data[0]
-	h.data[0] = h.data[h.capacity-1]
-	h.data = h.data[:h.capacity-1]
-	h.capacity--
-	h.heapify(0)
 	return v
 }
 
-func (h *minHeap) Insert(value int) {
+func (h *minHeap[T]) Insert(value T) {
 	h.data = append(h.data, value)
 	h.capacity++
 	for i := h.capacity - 1; i > 0 && h.data[i/2] > h.data[i]; i /= 2 {
@@ -59,7 +56,7 @@ func (h *minHeap) Insert(value int) {
 	}
 }
 
-func (h *minHeap) getMinIndex(arr []int, a, b int) int {
+func (h *minHeap[T]) getMinIndex(arr []T, a, b int) int {
 	if a < h.capacity {
 		if arr[a] < arr[b] {
 			return a

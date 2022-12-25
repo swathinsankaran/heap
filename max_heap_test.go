@@ -7,7 +7,7 @@ import (
 
 func TestMaxHeapBuild(t *testing.T) {
 	arr := []int{1, 12, 3, 14, 5, 16, 7, 8}
-	h := NewHeap(Max, 8)
+	h := NewHeap[int](Max, 8)
 	h.Build(&arr)
 	expectedArray := []int{16, 14, 7, 12, 5, 3, 1, 8}
 	gotArray := h.Print()
@@ -18,7 +18,7 @@ func TestMaxHeapBuild(t *testing.T) {
 
 func TestMaxHeapTop(t *testing.T) {
 	arr := []int{1, 12, 3, 14, 5, 16, 7, 8}
-	h := NewHeap(Max, 8)
+	h := NewHeap[int](Max, 8)
 	h.Build(&arr)
 	expectedValue := 16
 	gotValue := h.Top()
@@ -29,7 +29,7 @@ func TestMaxHeapTop(t *testing.T) {
 
 func TestMaxHeapPop(t *testing.T) {
 	arr := []int{1, 12, 3, 14, 5, 16, 7, 8}
-	h := NewHeap(Max, 8)
+	h := NewHeap[int](Max, 8)
 	h.Build(&arr)
 	expectedValue := 16
 	gotValue := h.Pop()
@@ -45,7 +45,7 @@ func TestMaxHeapPop(t *testing.T) {
 
 func TestMaxHeapPopEmpty(t *testing.T) {
 	arr := []int{1}
-	h := NewHeap(Max, 1)
+	h := NewHeap[int](Max, 1)
 	h.Build(&arr)
 	expectedValue := 1
 	gotValue := h.Pop()
@@ -61,7 +61,7 @@ func TestMaxHeapPopEmpty(t *testing.T) {
 
 func TestMaxHeapInsert(t *testing.T) {
 	arr := []int{1}
-	h := NewHeap(Max, 1)
+	h := NewHeap[int](Max, 1)
 	h.Build(&arr)
 	expectedValue := 1
 	gotValue := h.Pop()
