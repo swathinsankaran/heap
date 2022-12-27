@@ -1,7 +1,7 @@
 # heap
 
 [![GoDoc](https://godoc.org/github.com/swathinsankaran/heap?status.svg)](https://godoc.org/github.com/swathinsankaran/heap)
-[![Go Report Card](https://goreportcard.com/report/github.com/swathinsankaran/heap)](https://goreportcard.com/report/github.com/swathinsankaran/heap)
+[![Go Report Card](https://goreportcard.com/badge/github.com/swathinsankaran/heap)](https://goreportcard.com/report/github.com/swathinsankaran/heap)
 
 > A heap data structure library which utilizes `Generics`. This library currently supports heaps of type int, int8, int16, int32, int64, float32 and float64.
 
