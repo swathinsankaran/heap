@@ -25,7 +25,7 @@ import (
 
 func main() {
 
-	int8Arr := []int8{5, 3, 6, 11, 2, 4, 10, 22, 34, 7}
+	int8Arr := [10]int8{5, 3, 6, 11, 2, 4, 10, 22, 34, 7}
 
 	h := heap.NewHeap[int8](heap.Max, len(int8Arr))
 	h.Build(&int8Arr)             // Builds the heap with the array passed.
