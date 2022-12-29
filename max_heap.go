@@ -1,8 +1,11 @@
 package heap
 
+import "sync"
+
 type maxHeap[T SupportedTypes] struct {
 	data     []T
 	capacity int
+	lock     sync.RWMutex
 }
 
 func (h *maxHeap[T]) heapify(i int) {
@@ -18,6 +21,8 @@ func (h *maxHeap[T]) heapify(i int) {
 }
 
 func (h *maxHeap[T]) Build(arr *[]T) {
+	h.lock.Lock()
+	defer h.lock.Unlock()
 	if len(h.data) == 0 {
 		h.data = make([]T, len(*arr))
 	}
@@ -29,14 +34,20 @@ func (h *maxHeap[T]) Build(arr *[]T) {
 }
 
 func (h *maxHeap[T]) Print() []T {
+	h.lock.RLock()
+	defer h.lock.RUnlock()
 	return h.data
 }
 
 func (h *maxHeap[T]) Top() T {
+	h.lock.RLock()
+	defer h.lock.RUnlock()
 	return h.data[0]
 }
 
 func (h *maxHeap[T]) Pop() T {
+	h.lock.Lock()
+	defer h.lock.Unlock()
 	var v T
 	if h.capacity != 0 {
 		v = h.data[0]
@@ -49,6 +60,8 @@ func (h *maxHeap[T]) Pop() T {
 }
 
 func (h *maxHeap[T]) Insert(value T) {
+	h.lock.Lock()
+	defer h.lock.Unlock()
 	h.data = append(h.data, value)
 	h.capacity++
 	for i := h.capacity - 1; i > 0 && h.data[i/2] < h.data[i]; i /= 2 {
